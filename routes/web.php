@@ -24,3 +24,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/pertanyaan/create', 'PertanyaanController@create');
 Route::post('/home', 'PertanyaanController@store');
+
+Route::get('pertanyaan/{id}', 'PertanyaanController@show');
+Route::post('pertanyaan/{id}', 'JawabanController@store');
+
+//Route::get('pertanyaan/{id}', '');
+
+Route::get('/pertanyaan/{id}/edit','PertanyaanController@edit');

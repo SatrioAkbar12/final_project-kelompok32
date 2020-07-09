@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Pertanyaan;
+use App\Jawaban;
+
 use Illuminate\Support\Facades\Auth;
 
 class PertanyaanController extends Controller
@@ -21,5 +23,17 @@ class PertanyaanController extends Controller
         ]);
 
         return redirect('/home');
+    }
+
+
+    public function show($id){
+        $pertanyaan = Pertanyaan::find($id);
+        $jawaban = Jawaban::all();
+
+        return view('pertanyaan.show_pertanyaan', ['pertanyaan'=>$pertanyaan], ['jawaban' => $jawaban]);
+    }
+
+    public function edit($id){
+
     }
 }
