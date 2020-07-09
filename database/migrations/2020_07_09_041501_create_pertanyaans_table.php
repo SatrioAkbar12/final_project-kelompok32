@@ -18,7 +18,7 @@ class CreatePertanyaansTable extends Migration
             $table->integer('id_user');
             $table->string('judul');
             $table->text('isi');
-            $table->integer('id_jawabanTepat');
+            $table->integer('id_jawabanTepat')->nullable();
             $table->integer('poin_vote');
             $table->timestamps();
         });
