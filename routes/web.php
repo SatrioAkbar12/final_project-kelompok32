@@ -28,6 +28,9 @@ Route::post('/home', 'PertanyaanController@store');
 Route::get('pertanyaan/{id}', 'PertanyaanController@show');
 Route::post('pertanyaan/{id}', 'JawabanController@store');
 
-//Route::get('pertanyaan/{id}', '');
-
 Route::get('/pertanyaan/{id}/edit','PertanyaanController@edit');
+
+//Route library laravel-filemanager
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+});
