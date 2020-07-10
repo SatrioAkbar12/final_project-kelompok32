@@ -33,7 +33,7 @@
                                         @csrf
                                         @method('DELETE')
                                         <a href="/detail-pertanyaan/{{$p->id}}" class="btn btn-info">Detail</a>
-                                        <a href="#" class="btn btn-warning">Edit</a>
+                                        <a href="/detail-pertanyaan/{{$p->id}}/edit" class="btn btn-warning">Edit</a>
                                         <input type="submit" class="btn btn-danger" value="Hapus">
                                     </form>
                                 </td>
