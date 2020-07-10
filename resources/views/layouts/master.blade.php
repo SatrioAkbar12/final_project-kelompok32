@@ -57,7 +57,7 @@
       </div>
 
       <li class="nav-item @yield('active_pertanyaanmu')">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="/detail-pertanyaan">
           <i class="fas fa-fw fa-list"></i>
           <span>Pertanyaanmu</span></a>
       </li>
