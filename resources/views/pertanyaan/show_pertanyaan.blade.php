@@ -30,8 +30,27 @@
             @if(count($jawaban) == 0)
                 <h6>Masih belum ada jawaban nih!</h6>
             @else
+                <h4 class="">Jawaban Terpilih!</h4>
+                @if($pertanyaan->id_jawabanTepat == null)
+                    <div class="card border-left-primary mb-5 ml-4">
+                        <div class="card-body">
+                            <h6>Belum ada jawaban yang terpilih!</h6>
+                        </div>
+                    </div>
+                @else
+                    <div class="card border-left-primary mb-5 ml-4">
+                        <div class="card-header">
+
+                        </div>
+                        <div class="card-body">
+
+                        </div>
+                    </div>
+                @endif
+
+                <h4 class="">Jawaban lainnya</h4>
                 @for($i=0; $i<count($jawaban); $i++)
-                    <div class="card border-left-success mb-3">
+                    <div class="card border-left-success mb-3 ml-4">
                         <div class="card-header">
                             {{ $user_jawaban[$i] }}
                         </div>
