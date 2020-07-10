@@ -16,7 +16,7 @@ class JawabanController extends Controller
             'poin_vote' => 0
         ]);
 
-        return redirect('/home');
+        return redirect()->back();
     }
     public function showAll(){
         $jawaban = Jawaban::all();
