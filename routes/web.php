@@ -29,7 +29,11 @@ Route::post('/home', 'PertanyaanController@store');
 Route::get('pertanyaan/{id}', 'PertanyaanController@show')->name('index_pertanyaan');
 Route::post('pertanyaan/{id}', 'JawabanController@store');
 
-Route::get('/pertanyaan/{id}/edit','PertanyaanController@edit');
+Route::get('/detail-pertanyaan', 'PertanyaanController@user_only');
+Route::get('/detail-pertanyaan/{id}', 'PertanyaanController@detail');
+Route::get('/detail-pertanyaan/{id}/edit','PertanyaanController@edit');
+Route::put('/detail-pertanyaan/{id}', 'PertanyaanController@update');
+Route::delete('/detail-pertanyaan/{id}','PertanyaanController@delete');
 
 //Route library laravel-filemanager
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
