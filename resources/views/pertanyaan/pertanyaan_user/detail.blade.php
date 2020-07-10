@@ -66,6 +66,71 @@
                     : {{$pertanyaan->updated_at}}
                 </div>
             </div>
+            <div class="row mb-2">
+                <div class="col-2">
+                    Jawaban Tepat
+                </div>
+                <div class="col-10">
+                    :
+                </div>
+            </div>
+            <div class="card mb-3">
+                @if($jawaban_tepat == null)
+                    <div class="card-body">
+                        <h6>Belum ada jawaban yang terpilih</h6>
+                    </div>
+                @else
+                    <div class="card-body">
+                        {!! $jawaban_tepat->isi !!}
+                    </div>
+                @endif
+            </div>
+        </div>
+    </div>
+
+    <div class="card shadow mb-4">
+        <div class="card-header bg-gradient-secondary text-light">
+            <h5>Jawaban yang tersimpan</h5>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                @if(count($jawaban) == 0)
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Belum ada jawaban yang tersimpan</th>
+                            </tr>
+                        </thead>
+                    </table>
+                @else
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Jawaban</th>
+                                <th>Opsi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($jawaban as $j)
+                                <tr>
+                                    <td>
+                                        {!! $j->isi !!}
+                                    </td>
+                                    <td>
+                                        <form action="/detail-pertanyaan/{{$pertanyaan->id}}" method="POST">
+                                            @csrf
+                                            @method('POST')
+                                            <input type="hidden" name="id_jawabanTepat" value="{{$j->id}}">
+                                            <button type="submit" class="btn btn-success">Jadikan Jawaban Tepat</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                @endif
+
+            </div>
         </div>
     </div>
 
