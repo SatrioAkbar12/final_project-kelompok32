@@ -49,6 +49,13 @@ class PertanyaanController extends Controller
         return view('pertanyaan.pertanyaan_user.index', ['pertanyaan' => $pertanyaan]);
     }
 
+    public function detail($id){
+        $pertanyaan = Pertanyaan::find($id);
+        $tag = explode(',',$pertanyaan->tag);
+
+        return view('pertanyaan.pertanyaan_user.detail', ['pertanyaan' => $pertanyaan, 'tag' => $tag]);
+    }
+
     public function edit($id){
 
     }
