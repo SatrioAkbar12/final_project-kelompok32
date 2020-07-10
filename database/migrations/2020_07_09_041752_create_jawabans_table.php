@@ -15,7 +15,7 @@ class CreateJawabansTable extends Migration
     {
         Schema::create('jawabans', function (Blueprint $table) {
             // $table->id();
-            $table->unsignedBigInteger('id')->primary();
+            $table->unsignedBigInteger('id')->autoIncrement();;
             $table->unsignedBigInteger('id_user');
             $table->unsignedBigInteger('id_pertanyaan');
             $table->text('isi');

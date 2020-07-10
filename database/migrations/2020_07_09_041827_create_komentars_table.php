@@ -14,7 +14,7 @@ class CreateKomentarsTable extends Migration
     public function up()
     {
         Schema::create('komentars', function (Blueprint $table) {
-            $table->unsignedBigInteger('id')->primary();
+            $table->unsignedBigInteger('id')->autoIncrement();;
             $table->unsignedBigInteger('id_user');
             $table->string('id_asal');
             $table->text('isi');
