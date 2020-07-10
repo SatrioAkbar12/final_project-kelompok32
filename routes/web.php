@@ -31,6 +31,7 @@ Route::post('pertanyaan/{id}', 'JawabanController@store');
 
 Route::get('/detail-pertanyaan', 'PertanyaanController@user_only');
 Route::get('/detail-pertanyaan/{id}', 'PertanyaanController@detail');
+Route::post('/detail-pertanyaan/{id}', 'PertanyaanController@pilih_jawabantepat');
 Route::get('/detail-pertanyaan/{id}/edit','PertanyaanController@edit');
 Route::put('/detail-pertanyaan/{id}', 'PertanyaanController@update');
 Route::delete('/detail-pertanyaan/{id}','PertanyaanController@delete');

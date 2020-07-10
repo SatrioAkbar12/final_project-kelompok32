@@ -13,13 +13,24 @@
     <p class="ml-4"><strong>Dibuat pada {{$pertanyaan->created_at}}, oleh {{$user_pertanyaan->name}}</strong></p>
 
     <div class="card shadow mb-4">
-        <div class="card-body">
-            {!! $pertanyaan->isi !!}
-            <p>Tag :<br>
-                @foreach ($tag as $t)
-                    <button class="btn btn-info">{{$t}}</button>
-                @endforeach
-            </p>
+        <div class="row">
+            <div class="col-1 border-right text-center">
+                <div style="margin:70% 22%; position:center;" >
+                    <button class="btn btn-light btn-circle"><i class="fas fa-fw fa-arrow-up"></i></button>
+                        <br>Vote<br>
+                    <button class="btn btn-light btn-circle"><i class="fas fa-fw fa-arrow-down"></i></button>
+                </div>
+            </div>
+            <div class="col-11" style="padding-left: 0">
+                <div class="card-body">
+                    {!! $pertanyaan->isi !!}
+                    <p>Tag :<br>
+                        @foreach ($tag as $t)
+                            <button class="btn btn-info">{{$t}}</button>
+                        @endforeach
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -30,15 +41,45 @@
             @if(count($jawaban) == 0)
                 <h6>Masih belum ada jawaban nih!</h6>
             @else
-                @for($i=0; $i<count($jawaban); $i++)
-                    <div class="card border-left-success mb-3">
+                <h4>Jawaban Terpilih!</h4>
+                @if($pertanyaan->id_jawabanTepat == null)
+                    <div class="card border-left-primary mb-5 ml-4">
+                        <div class="card-body">
+                            <h6>Belum ada jawaban yang terpilih!</h6>
+                        </div>
+                    </div>
+                @else
+                    <div class="card border-left-primary mb-5 ml-4">
                         <div class="card-header">
-                            {{ $user_jawaban[$i] }}
+                            {{$user_jawabantepat->name}}
                         </div>
                         <div class="card-body">
-                            {!! $jawaban[$i]->isi !!}
-                            <div class="text-right">
-                                {{ $jawaban[$i]->created_at }}
+                            {!! $jawaban_tepat->isi !!}
+                        </div>
+                    </div>
+                @endif
+
+                <h4>Jawaban lainnya</h4>
+                @for($i=0; $i<count($jawaban); $i++)
+                    <div class="card border-left-success mb-3 ml-4">
+                        <div class="row">
+                            <div class="col-1 border-right text-center">
+                                <div style="margin:22px 20%;">
+                                    <button class="btn btn-light btn-circle"><i class="fas fa-fw fa-arrow-up"></i></button>
+                                        <br>Vote<br>
+                                    <button class="btn btn-light btn-circle"><i class="fas fa-fw fa-arrow-down"></i></button>
+                                </div>
+                            </div>
+                            <div class="col-11" style="padding-left: 0">
+                                <div class="card-header">
+                                    {{ $user_jawaban[$i] }}
+                                </div>
+                                <div class="card-body">
+                                    {!! $jawaban[$i]->isi !!}
+                                    <div class="text-right">
+                                        {{ $jawaban[$i]->created_at }}
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
