@@ -51,10 +51,10 @@
                 @else
                     <div class="card border-left-primary mb-5 ml-4">
                         <div class="card-header">
-
+                            {{$user_jawabantepat->name}}
                         </div>
                         <div class="card-body">
-
+                            {!! $jawaban_tepat->isi !!}
                         </div>
                     </div>
                 @endif
