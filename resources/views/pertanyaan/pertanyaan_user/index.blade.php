@@ -6,7 +6,7 @@
     <link href="{{asset('/sbadmin2/vendor/datatables/dataTables.bootstrap4.min.css')}}" rel="stylesheet">
 @endpush
 
-@section('active_pertanyaanmu', 'active');
+@section('active_pertanyaanmu', 'active')
 
 @section('konten')
     <h2 class="mb-4">Pertanyaanmu</h2>
