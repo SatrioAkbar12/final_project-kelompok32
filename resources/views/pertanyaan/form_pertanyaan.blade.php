@@ -21,7 +21,10 @@
                     <label for="isi_pertanyaan">Isi Pertanyaan</label>
                     <textarea name="isi" id="isi_pertanyaan" class="form-control my-editor" placeholder="Isi pertanyaan...">{!! old('isi', $isi ?? '') !!}</textarea>
                 </div>
-
+                <div class="form-group">
+                    <label for="tag_pertanyaan">Tag</label>
+                    <input type="text" class="form-control" id="tag_pertanyaan" name="tag" value="{{old('tag')}}" placeholder="Controh : tag 1,tag 2,tag 3,..." required>
+                </div>
                 <button type="submit" class="btn btn-success">Simpan</button>
                 <a href="/home" class="btn btn-danger">Batal</a>
             </form>
