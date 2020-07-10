@@ -22,7 +22,7 @@
                     <a href="/pertanyaan/{{$p->id}}">{{$p->judul}}</a>
                 </div>
                 <div class="card-body" style="">
-                    {{$p->isi}}
+                    {!! $p->isi !!}
                 </div>
             </div>
         @endforeach
