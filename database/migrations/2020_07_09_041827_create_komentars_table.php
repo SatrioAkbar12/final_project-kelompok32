@@ -14,11 +14,13 @@ class CreateKomentarsTable extends Migration
     public function up()
     {
         Schema::create('komentars', function (Blueprint $table) {
-            $table->id();
-            $table->integer('id_user');
+            $table->unsignedBigInteger('id')->primary();
+            $table->unsignedBigInteger('id_user');
             $table->string('id_asal');
             $table->text('isi');
             $table->timestamps();
+
+            $table->foreign('id_user')->references('id')->on('users');
         });
     }
 
