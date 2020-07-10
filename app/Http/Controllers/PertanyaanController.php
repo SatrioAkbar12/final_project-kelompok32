@@ -43,6 +43,12 @@ class PertanyaanController extends Controller
         return view('pertanyaan.show_pertanyaan', ['pertanyaan' => $pertanyaan, 'user_pertanyaan' => $user_pertanyaan, 'tag' => $tag, 'jawaban' => $jawaban, 'user_jawaban' => $user_jawaban]);
     }
 
+    public function user_only(){
+        $pertanyaan = Pertanyaan::where('id_user',Auth::id())->get();
+
+        return view('pertanyaan.pertanyaan_user.index', ['pertanyaan' => $pertanyaan]);
+    }
+
     public function edit($id){
 
     }
