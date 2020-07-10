@@ -1,35 +1,68 @@
 @extends('layouts.master')
 
-@section('head_title', 'Buat Pertanyaan Baru')
+@section('head_title')
+    {{$pertanyaan->judul}}
+@endsection
 
 @push('script_head')
     <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
 @endpush
 
 @section('konten')
-    <h2 class="mb-4">Buat Pertanyaan Baru</h2>
+    <h2 class="mb-4">{{$pertanyaan->judul}}</h2>
+    <p class="ml-4"><strong>Dibuat pada {{$pertanyaan->created_at}}, oleh {{$user_pertanyaan->name}}</strong></p>
 
     <div class="card shadow mb-4">
         <div class="card-body">
-            <form action="/home" method="POST">
+            {!! $pertanyaan->isi !!}
+            <p>Tag :<br>
+                @foreach ($tag as $t)
+                    <button class="btn btn-info">{{$t}}</button>
+                @endforeach
+            </p>
+        </div>
+    </div>
+
+    <h3 class="mb-3">Jawaban</h3>
+
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            @if(count($jawaban) == 0)
+                <h6>Masih belum ada jawaban nih!</h6>
+            @else
+                @for($i=0; $i<count($jawaban); $i++)
+                    <div class="card border-left-success mb-3">
+                        <div class="card-header">
+                            {{ $user_jawaban[$i] }}
+                        </div>
+                        <div class="card-body">
+                            {!! $jawaban[$i]->isi !!}
+                            <div class="text-right">
+                                {{ $jawaban[$i]->created_at }}
+                            </div>
+                        </div>
+                    </div>
+
+                @endfor
+            @endif
+        </div>
+    </div>
+
+    <div class="card shadow mb-4">
+        <div class="card-header bg-info">
+            <h5 class="text-light">Buat Jawabanmu Sendiri!</h5>
+        </div>
+        <div class="card-body">
+            <form action="/pertanyaan/{{$pertanyaan->id}}" method="POST">
                 @csrf
-                <div class="form-group">
-                    <label for="judul_pertanyaan">Judul Pertanyaan</label>
-                    <input type="text" class="form-control " id="judul_pertanyaan" name="judul" value="{{old('judul')}}" placeholder="Judul Pertanyaan..." required>
-                </div>
-                <div class="form-group">
-                    <label for="isi_pertanyaan">Isi Pertanyaan</label>
-                    <textarea name="isi" id="isi_pertanyaan" class="form-control my-editor" placeholder="Isi pertanyaan...">{!! old('isi', $isi ?? '') !!}</textarea>
-                </div>
-                <div class="form-group">
-                    <label for="tag_pertanyaan">Tag</label>
-                    <input type="text" class="form-control" id="tag_pertanyaan" name="tag" value="{{old('tag')}}" placeholder="Controh : tag 1,tag 2,tag 3,..." required>
-                </div>
-                <button type="submit" class="btn btn-success">Simpan</button>
-                <a href="/home" class="btn btn-danger">Batal</a>
+
+                <textarea name="isi" class="form-control my-editor">{!! old('isi', $isi ?? '') !!}</textarea>
+
+                <button type="submit" class="mt-2 btn btn-primary">Jawab!</button>
             </form>
         </div>
     </div>
+
 @endsection
 
 @push('script_body')

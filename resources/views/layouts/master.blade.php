@@ -18,6 +18,8 @@
   <!-- Custom styles for this template-->
   <link href="{{asset('/sbadmin2/css/sb-admin-2.min.css')}}" rel="stylesheet">
 
+  @stack('script_head')
+
 </head>
 
 <body id="page-top">
@@ -55,7 +57,7 @@
       </div>
 
       <li class="nav-item @yield('active_pertanyaanmu')">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="/detail-pertanyaan">
           <i class="fas fa-fw fa-list"></i>
           <span>Pertanyaanmu</span></a>
       </li>
@@ -325,6 +327,8 @@
 
   <!-- Custom scripts for all pages-->
   <script src="{{asset('/sbadmin2/js/sb-admin-2.min.js')}}"></script>
+
+  @stack('script_body')
 
 </body>
 

@@ -14,12 +14,16 @@ class CreateJawabansTable extends Migration
     public function up()
     {
         Schema::create('jawabans', function (Blueprint $table) {
-            $table->id();
-            $table->integer('id_user');
-            $table->integer('id_pertanyaan');
+            // $table->id();
+            $table->unsignedBigInteger('id')->autoIncrement();;
+            $table->unsignedBigInteger('id_user');
+            $table->unsignedBigInteger('id_pertanyaan');
             $table->text('isi');
             $table->integer('poin_vote');
             $table->timestamps();
+
+            $table->foreign('id_user')->references('id')->on('users');
+            $table->foreign('id_pertanyaan')->references('id')->on('pertanyaans');
         });
     }
 
