@@ -21,7 +21,7 @@
                 <div class="card-header">
                     <a href="/pertanyaan/{{$p->id}}">{{$p->judul}}</a>
                 </div>
-                <div class="card-body" style="">
+                <div class="card-body ml-3">
                     {!! $p->isi !!}
                 </div>
             </div>
