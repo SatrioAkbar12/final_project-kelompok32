@@ -57,6 +57,24 @@ class PertanyaanController extends Controller
     }
 
     public function edit($id){
+        $pertanyaan = Pertanyaan::find($id);
 
+        return view('pertanyaan.pertanyaan_user.edit_pertanyaan', ['pertanyaan' => $pertanyaan]);
+    }
+
+    public function update(Request $request){
+        Pertanyaan::where('id', $request->id)->update([
+            'judul' => $request->judul,
+            'isi' => $request->isi,
+            'tag' => $request->tag
+        ]);
+
+        return redirect('/detail-pertanyaan');
+    }
+
+    public function delete($id){
+        Pertanyaan::find($id)->delete();
+
+        return redirect('/detail-pertanyaan');
     }
 }
