@@ -14,13 +14,17 @@ class CreatePertanyaansTable extends Migration
     public function up()
     {
         Schema::create('pertanyaans', function (Blueprint $table) {
-            $table->id();
-            $table->integer('id_user');
+            // $table->id();
+            $table->unsignedBigInteger('id')->primary();
+            $table->unsignedBigInteger('id_user');
             $table->string('judul');
             $table->text('isi');
+            $table->string('tag');
             $table->integer('id_jawabanTepat')->nullable();
             $table->integer('poin_vote');
             $table->timestamps();
+
+            $table->foreign('id_user')->references('id')->on('users');
         });
     }
 
