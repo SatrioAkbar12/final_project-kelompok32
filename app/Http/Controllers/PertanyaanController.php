@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Pertanyaan;
 use App\Jawaban;
+use App\User;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -19,6 +20,7 @@ class PertanyaanController extends Controller
             'id_user' => Auth::id(),
             'judul' => $request->judul,
             'isi' => $request->isi,
+            'tag' => $request->tag,
             'poin_vote' => 0
         ]);
 
@@ -28,9 +30,17 @@ class PertanyaanController extends Controller
 
     public function show($id){
         $pertanyaan = Pertanyaan::find($id);
-        $jawaban = Jawaban::all();
+        $tag = explode(',',$pertanyaan->tag);
+        $user_pertanyaan = User::find($pertanyaan->id_user);
 
-        return view('pertanyaan.show_pertanyaan', ['pertanyaan'=>$pertanyaan], ['jawaban' => $jawaban]);
+        $jawaban = Jawaban::where('id_pertanyaan',$id)->get();
+        $user_jawaban = array();
+        foreach($jawaban as $j){
+            $a = User::find($j->id_user);
+            $user_jawaban[] = $a->name;
+        }
+
+        return view('pertanyaan.show_pertanyaan', ['pertanyaan' => $pertanyaan, 'user_pertanyaan' => $user_pertanyaan, 'tag' => $tag, 'jawaban' => $jawaban, 'user_jawaban' => $user_jawaban]);
     }
 
     public function edit($id){
