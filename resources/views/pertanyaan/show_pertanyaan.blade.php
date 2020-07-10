@@ -16,9 +16,9 @@
         <div class="row">
             <div class="col-1 border-right text-center">
                 <div style="margin:70% 22%; position:center;" >
-                    <button class="btn btn-light btn-circle"><i class="fas fa-fw fa-arrow-up"></i></button>
+                    <button class="btn btn-light btn-circle" onclick="upvote()"><i class="fas fa-fw fa-arrow-up"></i></button>
                         <br>Vote<br>
-                    <button class="btn btn-light btn-circle"><i class="fas fa-fw fa-arrow-down"></i></button>
+                    <button class="btn btn-light btn-circle" onclick="downvote()"><i class="fas fa-fw fa-arrow-down"></i></button>
                 </div>
             </div>
             <div class="col-11" style="padding-left: 0">
@@ -107,6 +107,23 @@
 @endsection
 
 @push('script_body')
+    <script>
+        //sambungin ke controllernya gimana??
+        function upvote(){
+
+            $temp={{$pertanyaan->poin_vote}};
+            $temp1 = {{$user_pertanyaan->reputasi}};
+            $temp+=1;
+            $temp1+=10;
+
+            console.log({{'$temp'}},{{'$temp1'}});
+            return true;
+        }
+        function downvote(){
+            console.log('DOWNN');
+            return true;
+        }
+    </script>
   <script>
     var editor_config = {
       path_absolute : "/",
