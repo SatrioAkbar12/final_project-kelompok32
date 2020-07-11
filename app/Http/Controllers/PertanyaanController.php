@@ -33,7 +33,7 @@ class PertanyaanController extends Controller
         $tag = explode(',',$pertanyaan->tag);
         $user_pertanyaan = User::find($pertanyaan->id_user);
 
-        $jawaban = Jawaban::where('id_pertanyaan',$id)->get();
+        $jawaban = Jawaban::where('id_pertanyaan',$id)->orderBy('id','desc')->get();
         $jawaban_tepat = Jawaban::find($pertanyaan->id_jawabanTepat);
 
         $user_jawaban = array();
