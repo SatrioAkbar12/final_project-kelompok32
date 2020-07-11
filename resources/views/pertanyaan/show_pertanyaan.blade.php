@@ -85,10 +85,9 @@
                                     @else
                                         {{$jawaban[$i]->poin_vote}}
                                     @endif
-                                    {{-- <button class="btn btn-light btn-circle"><i class="fas fa-fw fa-arrow-down"></i></button> --}}
                                     <form action="/jawaban/{{$jawaban[$i]->id}}/downvote" method="POST">
                                         @csrf
-                                        <button type="submit" class="btn btn-light btn-circle"><i class="fas fa-fw fa-arrow-up"></i></button>
+                                        <button type="submit" class="btn btn-light btn-circle"><i class="fas fa-fw fa-arrow-down"></i></button>
                                     </form>
                                 </div>
                             </div>
