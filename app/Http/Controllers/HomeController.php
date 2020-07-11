@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $pertanyaan = Pertanyaan::get();
+        $pertanyaan = Pertanyaan::orderBy('id','desc')->get();
         return view('index', ['pertanyaan' => $pertanyaan]);
     }
 }
