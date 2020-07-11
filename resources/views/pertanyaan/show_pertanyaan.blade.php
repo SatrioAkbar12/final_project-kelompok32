@@ -124,6 +124,7 @@
             return true;
         }
     </script>
+
   <script>
     var editor_config = {
       path_absolute : "/",
