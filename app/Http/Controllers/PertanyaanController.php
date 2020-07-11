@@ -66,8 +66,27 @@ class PertanyaanController extends Controller
     }
 
     public function pilih_jawabantepat($id,Request $request){
+        $pertanyaan = Pertanyaan::find($id);
+
+        $jawaban = Jawaban::find($request->id_jawabanTepat);
+        $user_jawabanTepat = User::find($jawaban->id_user);
+        $reputasi = $user_jawabanTepat->reputasi + 15;
+
+        if($pertanyaan->id_jawabanTepat != null){
+            $user_jawabanTepat_lama = User::find($jawaban->id_user);
+            $reputasi_lama = $user_jawabanTepat_lama->reputasi - 15;
+
+            User::where('id', $user_jawabanTepat_lama->id)->update([
+                'reputasi' => $reputasi_lama
+            ]);
+        }
+
         Pertanyaan::where('id',$id)->update([
             'id_jawabanTepat' => $request->id_jawabanTepat
+        ]);
+
+        User::where('id',$user_jawabanTepat->id)->update([
+            'reputasi' => $reputasi
         ]);
 
         return redirect()->back();
