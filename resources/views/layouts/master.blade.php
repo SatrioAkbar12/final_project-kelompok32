@@ -62,7 +62,7 @@
       </li>
 
       <li class="nav-item @yield('active_profil')">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="/profil">
           <i class="fas fa-fw fa-user" aria-hidden="true"></i>
           <span>Profil</span></a>
       </li>
@@ -233,7 +233,7 @@
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="/profil">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
                 </a>
