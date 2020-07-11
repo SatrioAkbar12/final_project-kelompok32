@@ -16,9 +16,19 @@
         <div class="row">
             <div class="col-1 border-right text-center">
                 <div style="margin:70% 22%; position:center;" >
-                    <button class="btn btn-light btn-circle" onclick="upvote()"><i class="fas fa-fw fa-arrow-up"></i></button>
-                        <br>Vote<br>
-                    <button class="btn btn-light btn-circle" onclick="downvote()"><i class="fas fa-fw fa-arrow-down"></i></button>
+                    <form action="/pertanyaan/{{$pertanyaan->id}}/upvote" method="POST">
+                        @csrf
+                        <button class="btn btn-light btn-circle" type="submit"><i class="fas fa-fw fa-arrow-up"></i></button>
+                    </form>
+                    @if($pertanyaan->poin_vote == null)
+                        Vote
+                    @else
+                        {{$pertanyaan->poin_vote}}
+                    @endif
+                    <form action="/pertanyaan/{{$pertanyaan->id}}/downvote" method="POST">
+                        @csrf
+                        <button class="btn btn-light btn-circle" type="submit"><i class="fas fa-fw fa-arrow-down"></i></button>
+                    </form>
                 </div>
             </div>
             <div class="col-11" style="padding-left: 0">
@@ -65,9 +75,21 @@
                         <div class="row">
                             <div class="col-1 border-right text-center">
                                 <div style="margin:22px 20%;">
-                                    <button class="btn btn-light btn-circle"><i class="fas fa-fw fa-arrow-up"></i></button>
-                                        <br>Vote<br>
-                                    <button class="btn btn-light btn-circle"><i class="fas fa-fw fa-arrow-down"></i></button>
+                                    {{-- <button class="btn btn-light btn-circle"><i class="fas fa-fw fa-arrow-up"></i></button> --}}
+                                    <form action="/jawaban/{{$jawaban[$i]->id}}/upvote" method="POST">
+                                        @csrf
+                                        <button type="submit" class="btn btn-light btn-circle"><i class="fas fa-fw fa-arrow-up"></i></button>
+                                    </form>
+                                    @if($jawaban[$i] == null)
+                                        Vote
+                                    @else
+                                        {{$jawaban[$i]->poin_vote}}
+                                    @endif
+                                    {{-- <button class="btn btn-light btn-circle"><i class="fas fa-fw fa-arrow-down"></i></button> --}}
+                                    <form action="/jawaban/{{$jawaban[$i]->id}}/downvote" method="POST">
+                                        @csrf
+                                        <button type="submit" class="btn btn-light btn-circle"><i class="fas fa-fw fa-arrow-up"></i></button>
+                                    </form>
                                 </div>
                             </div>
                             <div class="col-11" style="padding-left: 0">
@@ -107,7 +129,7 @@
 @endsection
 
 @push('script_body')
-    <script>
+    {{-- <script>
         //sambungin ke controllernya gimana??
         function upvote(){
 
@@ -123,7 +145,7 @@
             console.log('DOWNN');
             return true;
         }
-    </script>
+    </script> --}}
 
   <script>
     var editor_config = {
