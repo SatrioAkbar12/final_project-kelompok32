@@ -75,7 +75,6 @@
                         <div class="row">
                             <div class="col-1 border-right text-center">
                                 <div style="margin:22px 20%;">
-                                    {{-- <button class="btn btn-light btn-circle"><i class="fas fa-fw fa-arrow-up"></i></button> --}}
                                     <form action="/jawaban/{{$jawaban[$i]->id}}/upvote" method="POST">
                                         @csrf
                                         <button type="submit" class="btn btn-light btn-circle"><i class="fas fa-fw fa-arrow-up"></i></button>
@@ -128,24 +127,6 @@
 @endsection
 
 @push('script_body')
-    {{-- <script>
-        //sambungin ke controllernya gimana??
-        function upvote(){
-
-            $temp={{$pertanyaan->poin_vote}};
-            $temp1 = {{$user_pertanyaan->reputasi}};
-            $temp+=1;
-            $temp1+=10;
-
-            console.log({{'$temp'}},{{'$temp1'}});
-            return true;
-        }
-        function downvote(){
-            console.log('DOWNN');
-            return true;
-        }
-    </script> --}}
-
   <script>
     var editor_config = {
       path_absolute : "/",
