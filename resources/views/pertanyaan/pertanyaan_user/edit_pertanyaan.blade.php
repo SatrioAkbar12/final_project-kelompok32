@@ -51,7 +51,7 @@
                     <input type="text" class="form-control" id="tag_pertanyaan" name="tag" value="{{$pertanyaan->tag}}" placeholder="Controh : tag 1,tag 2,tag 3,..." required>
                 </div>
                 <button type="submit" class="btn btn-success">Simpan</button>
-                <a href="/home" class="btn btn-danger">Batal</a>
+                <a href="/detail-pertanyaan" class="btn btn-danger">Batal</a>
             </form>
         </div>
     </div>
