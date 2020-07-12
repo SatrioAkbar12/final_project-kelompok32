@@ -22,8 +22,8 @@ class CreateJawabansTable extends Migration
             $table->integer('poin_vote');
             $table->timestamps();
 
-            $table->foreign('id_user')->references('id')->on('users');
-            $table->foreign('id_pertanyaan')->references('id')->on('pertanyaans');
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('id_pertanyaan')->references('id')->on('pertanyaans')->onDelete('cascade');
         });
     }
 

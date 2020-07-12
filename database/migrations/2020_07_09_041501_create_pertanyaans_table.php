@@ -24,7 +24,7 @@ class CreatePertanyaansTable extends Migration
             $table->integer('poin_vote');
             $table->timestamps();
 
-            $table->foreign('id_user')->references('id')->on('users');
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
