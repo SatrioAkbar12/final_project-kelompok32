@@ -109,7 +109,8 @@ class PertanyaanController extends Controller
     }
 
     public function delete($id){
-        Pertanyaan::find($id)->delete();
+        // Pertanyaan::find($id)->delete();
+        Pertanyaan::destroy($id);
 
         return redirect('/detail-pertanyaan');
     }
